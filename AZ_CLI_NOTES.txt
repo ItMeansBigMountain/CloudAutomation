@@ -1,0 +1,38 @@
+LOGIN TO CLI 
+    az login
+
+
+
+
+
+
+
+CHECK USER ACCOUNT 
+    az account show
+
+
+
+
+
+
+
+
+SET ACCOUNT SUBSCRIPTION
+    az account set subscription
+
+
+
+
+
+
+
+
+
+CREATE SERVICE PRINCIPAL APPLICATION
+    az ad sp create-for-rbac --name {SERVICE_PRINCIPAL_NAME} --role {ROLE_NAME} --scopes /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup1}
+
+
+
+
+
+

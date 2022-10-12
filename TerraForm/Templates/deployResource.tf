@@ -1,4 +1,10 @@
-# 1. Specify the version of the AzureRM Provider to use
+# **********************************
+# RENAME TO main.tf IN ORDER TO RUN
+# **********************************
+
+
+
+# Specify the version of the AzureRM Provider to use
 terraform {
   required_providers {
     azurerm = {
@@ -19,6 +25,6 @@ provider "azurerm" {
 
 # DEPLOY A RESOURCE GROUP
 resource "azurerm_resource_group" "rg" {
-    name = "terraform-demo"
-    location = "centralus"
+  name     = "terraform-demo"
+  location = "centralus"
 }

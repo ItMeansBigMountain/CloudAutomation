@@ -1,0 +1,99 @@
+TERRAFORM AZURE 
+    make sure you have AZURE CLI
+        'az login'
+    make sure you have TERRAFORM CLI
+    name playbook file as 'main.tf'
+
+
+
+
+
+
+
+
+
+DEPLOYING A RESOURCE GROUP
+    Set {provider} to 'azurerm'
+    Set {resource} to  'azurerm_resource_group'
+        fill in parameters
+
+    RUN [main.tf]
+        write 'terraform validate'
+        write 'terraform init'
+        write 'terraform plan'
+        write 'terraform apply'
+
+    UNDO EVERYTHING TERRAFORM FILE PLANNED
+        write 'terraform destroy'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Authenticate Terraform to Azure using a Service Principal
+    
+    CREATE SERVICE PRINCIPAL APPLICATION
+        az ad sp create-for-rbac --name {SERVICE_PRINCIPAL_NAME} --role {ROLE_NAME} --scopes /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup1}
+
+            ex: az ad sp create-for-rbac --name SPterraform --role Contributor --scopes /subscriptions/e928ce0b-aa60-4e05-a8c2-a9eb05266c69/resourceGroups/learning
+
+    "MAKE SURE TO COPY THE RETURN IN THE CLI AND SAVE IT AS AUTH REFERENCE"
+    DASHBOARD SERVICE PRINCIPAL CHECK
+        - go to active directory
+        - app regstrations
+        - here you will find newly made Service Principal
+
+    RESET SERVICE PRINCIPAL APPLICATION CREDENTIALS
+        az ad sp credential reset --name "appid"
+
+
+
+
+
+
+
+    - ADD SERVICE PRINCIPAL OUTPUT INTO BASH ENV VARIABLES
+        - write 'code ~/.bashrc'
+        - add to the bottom of the page
+        - source files
+            write '. ~/.bashrc'
+    
+        VERIFY VARIABLES
+            - write 'printenv | grep ^ARM*'
+        
+        ACCESS VARIABLE
+            - write '$(env.ARM_CLIENT_SECRET}'
+
+
+
+
+    - SAVE AZURE CREDENTIALS WITHIN TERRAFORM CONFIG FILE
+
+        add SERVICE PRINCIPAL credentials inside 'provider{}' block
+            [FETCH CREDENTIALS FROM CLI OR AZURE APP REGISTRATIONS DASHBOARD]
+            
+
+
+            ``````````````````` CODE BLOCK ```````````````````
+
+            provider "azurerm" {
+            features {}
+
+            subscription_id  = "azure_subscription_id"
+            tenant_id        = "azure_subscription_tenant_id"
+            client_id        = "service_principal_appid"
+            client_secret    = "service_principal_password"
+            }
+
+            ``````````````````````````````````````````````````
+
+

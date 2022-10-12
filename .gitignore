@@ -1,0 +1,5 @@
+servicePrincipal.json
+*/main.tf
+*/.terraform.lock.hcl
+*/.terraform
+

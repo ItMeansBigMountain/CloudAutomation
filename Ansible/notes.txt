@@ -1,8 +1,12 @@
 RUNNING PLAYBOOK
     ansible-playbook PLAYBOOK_NAME.yml
 
+
+
+
 " ANSIBLE WILL TRY TO FIND CONFIG FILE IN CURRENT DIR BUT WILL DEFAULT TO /etc/ansible/ansible.cfg "
 " DEFINE INVENTORY FILE IN ansible.cfg!!! will default to etc/ansible/hosts "
+
 
 
 LINUX ONLY ANSIBLE INSTALLATION
@@ -15,7 +19,13 @@ LINUX ONLY ANSIBLE INSTALLATION
 
 
 
-_____________________________________________________________________________________________________
+
+
+
+
+
+
+___________________________________________________________________________________________ 
 CHANGE INVENTORY FILE
     cd /etc/ansible
     nano hosts
@@ -36,7 +46,7 @@ CHANGE CONFIG FILE
             uncomment lines of code or change values
         
         disable ssh key auth - host_key_checking = False
-_____________________________________________________________________________________________________
+_________________________________________________________________________________________ 
 
 
 
@@ -53,7 +63,13 @@ ANSIBLE PLAYBOOK MODULE DOCS
 
 
 
-_____________________________________________________________________________________________________
+
+
+
+
+
+
+_______________________________________________________________________________________ 
 
 .YML PLAYBOOK EXAMPLE
 
@@ -65,7 +81,14 @@ ________________________________________________________________________________
         apt: #MODULE
             name: nano
             state: latest
-_____________________________________________________________________________________________________
+_______________________________________________________________________________________ 
+
+
+
+
+
+
+
 
 
 
@@ -77,10 +100,19 @@ ________________________________________________________________________________
 ANSIBLE INIT CONFIG FILE IN CURRENT DIR
     ansible-config init --disabled -t all > ansible.cfg
 
+
+
+
+
 CISCO DEV NET TESTING ROUTERS
     https://devnetsandbox.cisco.com/RM/Topology
         IOS XE on CSR Latest Code Always On
         IOS XE on CSR Recommended Code Always On
+
+
+
+
+
 
 ANSIBLE COMMAND TASKS
 
@@ -91,6 +123,12 @@ ANSIBLE COMMAND TASKS
         ansible GROUP_NAME -a TERMINAL_COMMAND
             ex: ansible linux -a ls
             ex: ansible routers -m ios_command -a "commands='show ip int brief'"
+
+
+
+
+
+
 
 
 

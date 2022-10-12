@@ -29,7 +29,7 @@ SET ACCOUNT SUBSCRIPTION
 
 
 CREATE SERVICE PRINCIPAL APPLICATION
-    az ad sp create-for-rbac --name {SERVICE_PRINCIPAL_NAME} --role {ROLE_NAME} --scopes /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup1}
+    az ad sp create-for-rbac --name {SERVICE_PRINCIPAL_NAME} --role {ROLE_NAME} --scopes /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup1} > servicePrincipal.json
 
 
 

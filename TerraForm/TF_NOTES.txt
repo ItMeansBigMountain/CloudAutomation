@@ -97,3 +97,17 @@ Authenticate Terraform to Azure using a Service Principal
             ``````````````````````````````````````````````````
 
 
+
+
+
+
+
+STEPS TO CREATE VIRTUAL MACHINE 
+    # create a resource group
+    # create a virtual network
+    # create a subnet
+    # create a network interface card
+    # create a virtual machine (we can also create disks etc as a separate step)
+
+
+

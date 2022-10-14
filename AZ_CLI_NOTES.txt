@@ -36,3 +36,11 @@ CREATE SERVICE PRINCIPAL APPLICATION
 
 
 
+LIST ALL VIRTUAL MACHINES
+    # az vm image list --output table
+    # az vm image list --all
+    # az vm image list-offers -l westus -p MicrosoftWindowsServer
+    # az vm image list -f CentOS
+
+
+

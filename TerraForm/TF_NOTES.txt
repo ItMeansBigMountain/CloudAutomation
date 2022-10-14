@@ -4,6 +4,17 @@ TERRAFORM AZURE
     make sure you have TERRAFORM CLI
     name playbook file as 'main.tf'
 
+    NOTE: Resource names must be camelCase or Snake_Case
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -25,6 +36,56 @@ DEPLOYING A RESOURCE GROUP
 
     UNDO EVERYTHING TERRAFORM FILE PLANNED
         write 'terraform destroy'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RUN TERRAFORM PLAN [main.tf]
+    write 'terraform validate'
+    write 'terraform init'
+    write 'terraform plan'
+    write 'terraform apply'  (  'apply' also runs 'plan' unless given an '-out file'   )
+
+
+
+SAVE TERRAFROM PLAN AS OUTPUT
+    write 'terraform plan -out'
+
+
+
+
+
+DISPLAY LIST OF CURRENT TERRAFORM STATE
+    terraform state list
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -102,12 +163,30 @@ Authenticate Terraform to Azure using a Service Principal
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 STEPS TO CREATE VIRTUAL MACHINE 
     # create a resource group
     # create a virtual network
     # create a subnet
     # create a network interface card
     # create a virtual machine (we can also create disks etc as a separate step)
+
 
 
 

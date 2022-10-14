@@ -32,7 +32,7 @@ resourceManagement_client = ResourceManagementClient(credential, subscription_id
 
 
 # CREATE/UPDATE PARAMS 
-resource_name = "automation-testing" 
+resource_name = input("Please enter Resource Group Title: ")
 resource_params = {
     "managedBy" : None ,  #The ID of the resource that manages this resource group.
     "location" : "centralus" ,
@@ -82,7 +82,7 @@ resource_params = {
 
 
 # DELETE resource group
-# deletion_operation = resourceManagement_client.resource_groups.begin_delete(resource_name)
-# print("deleting \'" + resource_name + "\' ...")
-# deletion_operation.wait()
-# print("done!")
+deletion_operation = resourceManagement_client.resource_groups.begin_delete(resource_name)
+print("deleting \'" + resource_name + "\' ...")
+deletion_operation.wait()
+print("done!")

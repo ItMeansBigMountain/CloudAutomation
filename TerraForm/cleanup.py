@@ -8,6 +8,7 @@ try:
     os.system("rm .terraform.lock.hcl")
     os.system("rm terraform.tfstate")
     os.system("rm terraform.tfstate.backup")
+    os.system("rm .terraform.tfstate.lock.info")
     print("Done!")
 
 except Exception as e:

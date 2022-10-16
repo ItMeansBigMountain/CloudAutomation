@@ -4,12 +4,6 @@ TERRAFORM AZURE
     make sure you have TERRAFORM CLI
     name playbook file as 'main.tf'
 
-    NOTE: Resource names must be camelCase or Snake_Case
-
-
-
-
-
 
 
 
@@ -68,7 +62,34 @@ RUN TERRAFORM PLAN [main.tf]
 
 
 SAVE TERRAFROM PLAN AS OUTPUT
-    write 'terraform plan -out'
+    write 'terraform plan -out FILE_NAME.plan'
+
+    USE TERRAFORM PLAN
+    write 'terraform apply FILE_NAME.plan'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

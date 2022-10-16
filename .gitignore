@@ -1,6 +1,8 @@
 servicePrincipal.json
 */main.tf
+*/output.tf
 */.terraform.lock.hcl
 */.terraform
 */terraform.tfstate
-terraform.tfstate.backup
+*/terraform.tfstate.backup
+*/.terraform.tfstate.lock.info

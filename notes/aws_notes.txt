@@ -5,9 +5,9 @@ CREATING VPC &  INSTANCE
     Created a route table
     Associated the table to the subnet
     Made a route for the internet traffic to the IGW
-    Made a ACL
+    Made a Access Control List
     Allowed all traffic in and out bound (ideally you'd want to restrict this to least privilege, but let's just open it up for this)
-    Created a SG
+    Created a Security Group
     I think you can associate that with the subnet iirc
     Added rules to allow port 22 and port 80 traffic from all ipv4 sources
     Created my ec2 under my vpc and public subnet

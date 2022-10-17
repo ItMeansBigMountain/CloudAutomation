@@ -1,5 +1,11 @@
 # **********************************
 # RENAME TO main.tf IN ORDER TO RUN
+
+# MAKE SURE TO PURGE DELETED VAULTS USING
+# - az keyvault list-deleted
+# - az keyvault purge --name my-fancy-key-vault
+
+
 # **********************************
 
 
@@ -42,7 +48,7 @@ data "azurerm_client_config" "current" {}
 # CREATE RESOURCE GROUP
 resource "azurerm_resource_group" "rg" {
   location = "centralus"
-  name     = "Demo"
+  name     = "terraform-demo"
 }
 
 
@@ -67,11 +73,17 @@ resource "azurerm_key_vault" "key-vault" {
   #   object_id = data.azurerm_client_config.current.object_id
 
 
-  #   key_permissions = ["get", "create", "list", "restore", "recover", "unwrapkey", "wrapkey", "purge", "encrypt", "decrypt", "sign", "verify"]
+  #   key_permissions = [
+  #     "Get", "Create", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify"
+  #   ]
 
-  #   secret_permissions = ["get", "create", "list", "restore", "recover", "unwrapkey", "wrapkey", "purge", "encrypt", "decrypt", "sign", "verify"]
+  #   secret_permissions = [
+  #     "Get", "Create", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify"
+  #   ]
 
-  #   storage_permissions = ["get", "create", "list", "restore", "recover", "unwrapkey", "wrapkey", "purge", "encrypt", "decrypt", "sign", "verify"]
+  #   storage_permissions = [
+  #     "Get", "Create", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify"
+  #   ]
   # }
 
 
@@ -80,13 +92,19 @@ resource "azurerm_key_vault" "key-vault" {
 
 
 # CREATING ACCESS POLICY METHOD 2
-# resource "azurerm_key_vault_access_policy" "key-vault-access-policy" {
-#   key_vault_id       = azurerm_key_vault.key-vault.id
-#   tenant_id          = data.azurerm_client_config.current.tenant_id
-#   object_id          = data.azurerm_client_config.current.object_id
-#   key_permissions    = ["get", "create", "list", "restore", "recover", "unwrapkey", "wrapkey", "purge", "encrypt", "decrypt", "sign", "verify"]
-#   secret_permissions = ["get", "delete", "list", "set"]
-# }
+resource "azurerm_key_vault_access_policy" "key-vault-access-policy" {
+  key_vault_id = azurerm_key_vault.key-vault.id
+
+  tenant_id = data.azurerm_client_config.current.tenant_id
+  object_id = data.azurerm_client_config.current.object_id
+
+
+  key_permissions = [
+    "Get", "Create", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "Delete"
+  ]
+
+  secret_permissions = ["Get", "Delete", "List", "Set"]
+}
 
 
 
@@ -94,8 +112,8 @@ resource "azurerm_key_vault" "key-vault" {
 
 
 # CREATE SECRET KEY-VALUE PAIR
-# resource "azurerm_key_vault_secret" "secret" {
-#   key_vault_id = azurerm_key_vault.key-vault.id
-#   name         = "secret"
-#   value        = "53cr3t"
-# }
+resource "azurerm_key_vault_secret" "secret" {
+  key_vault_id = azurerm_key_vault.key-vault.id
+  name         = "secret"
+  value        = "53cr3t"
+}

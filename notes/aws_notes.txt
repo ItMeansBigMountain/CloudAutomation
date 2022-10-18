@@ -72,3 +72,23 @@ ENCRYPT USING AWS KEY MANAGER SYSTEM
                           --output ~/output/.
 
 
+
+
+
+____________________________________________________________________
+
+
+
+
+CLI
+
+    START EC2 INSTANCE
+        aws ec2 run-instances --key-name {KEYNAME} --instance-type t3.micro --image-id {AMIID} --user-data {USER_DATA_FILE_PATH} --security-group-ids {HTTPACCESS} --subnet-id {SUBNETID} --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=CLI__PRODUCED_IMAGE}]' --output text --query 'Instances[*].InstanceId'
+
+
+    DECRIBE INFO OF INSTANCE
+        aws ec2 describe-instances --instance-id {NEW-INSTANCE-ID} --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'
+
+
+    CREATE AMI (Amazon Machine Image)
+        

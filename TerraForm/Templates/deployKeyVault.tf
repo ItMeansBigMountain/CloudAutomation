@@ -100,18 +100,17 @@ resource "azurerm_key_vault_access_policy" "key-vault-access-policy" {
 
 
   key_permissions = [
-    "Get", "Create", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "Delete"
+    "Get", "Create", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify"
   ]
 
-  secret_permissions = ["Get", "Delete", "List", "Set"]
+  secret_permissions = ["Get", "Delete", "List", "Set", "Backup", "Purge", "Recover"]
 }
 
 
 
 
 
-
-# CREATE SECRET KEY-VALUE PAIR
+# CREATE SECRET KEY-VALUE PAIR (sometimes youll need to run this twice to create secret)
 resource "azurerm_key_vault_secret" "secret" {
   key_vault_id = azurerm_key_vault.key-vault.id
   name         = "secret"

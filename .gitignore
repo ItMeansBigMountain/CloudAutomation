@@ -1,3 +1,4 @@
+*.pem
 servicePrincipal.json
 */main.tf
 */output.tf

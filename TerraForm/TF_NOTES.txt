@@ -12,6 +12,42 @@ TERRAFORM AZURE
 
 
 
+TERRAFORM CDK
+    'cloud development kit'
+    - Coding Libraries To Import & Use Within Scripts
+    - python, java, typescript, c#, go
+
+    - MUST HAVE npm & pipenv INSTALLED
+
+    -DELETE PIPENV VIRTUAL ENVIROMENTS
+        - cd into project directory
+        - pipenv --rm
+
+    CREATE PROJECT 
+        # npm install -g cdktf-cli
+        # cdktf init --template=python --local
+
+    ADD PROVIDERS TO CODE-BASE
+        - cdktf.json ---> add provider string inside array
+        - cdktf get  ---> downloads .gen package
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -213,7 +249,6 @@ STEPS TO CREATE VIRTUAL MACHINE
 
 
 
-
 STEPS TO CREATE STORAGE CONTAINER
     # create / choose a resource group
     # create a storage account
@@ -221,3 +256,69 @@ STEPS TO CREATE STORAGE CONTAINER
     # upload a blob file
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+JSON TERRAFORM FILE!!!
+    - you can run .json files like .tf files!!!
+    
+    - naming convention: main.tf --> main.tf.json   
+
+
+    -You could use python to dump a json file with keys corresponding to terraform configuration!
+
+
+
+
+    
+
+    ********   JSON EXAMPLE ( main.tf.json   )   **********
+     
+        {
+            "resource": {
+                    "aws_instance": {
+                    "example": {
+                        "instance_type": "t2.micro",
+                        "ami": "ami-abc123"
+                    }
+                }
+            }
+        }
+    *******************************************************
+
+
+    *************  HCL EXAMPLE (  main.tf  )  *************
+    
+        resource "aws_instance" "example" {
+            instance_type = "t2.micro"
+            ami           = "ami-abc123"
+        }
+    *******************************************************

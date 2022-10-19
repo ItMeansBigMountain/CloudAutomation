@@ -211,3 +211,13 @@ STEPS TO CREATE VIRTUAL MACHINE
 
 
 
+
+
+
+STEPS TO CREATE STORAGE CONTAINER
+    # create / choose a resource group
+    # create a storage account
+    # create a storage container
+    # upload a blob file
+
+

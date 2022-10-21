@@ -8,18 +8,72 @@
     # pip install azure-identity
 
 
+
+
+
+
 # DOCUMENTATION
-    # https://portal.azure.com/#@affanfareedgmail.onmicrosoft.com/dashboard/private/97e74045-7a5d-4678-b2d0-edd065b4068e
+    # https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python?tabs=managed-identity%2Croles-azure-portal%2Csign-in-visual-studio-codev
 
 
 
-import os, uuid
-from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
+
+
+
+# *****************************************
+# MAKE SURE TO ADD EMAIL TO ROLE TO "Storage Blob Data Contributor" WITHIN SERVICE ACCOUNT 
+# *****************************************
+
+
+
+
+from azure.storage.blob import BlobServiceClient
+from azure.identity import AzureCliCredential
+
+
+
+
+# AUTHORIZATION
+credential = AzureCliCredential()
+
+
+
+
+
+
+# STORAGE ACCOUNT URL 
+account_url = "https://terraformdemo786.blob.core.windows.net/"
+
+
+
+
+# Create the BlobServiceClient object
+blob_service_client = BlobServiceClient(account_url, credential=credential)
+
+
+
+
+
 
 try:
-    print("Azure Blob Storage v" + __version__ + " - Python quickstart sample")
 
-    # Quick start code goes here
+    # List Containers in storage account
+    for c in blob_service_client.list_containers():
+        print('-----------------------------------')
+        print("Container: ", c.name  )
+
+        # List the blobs in the container
+        container_client = blob_service_client.get_container_client(container= c.name)
+        blob_list = container_client.list_blobs()
+        for blob in blob_list:
+            print("\t" + blob.name)
+
+
+        # DOWNLOAD BLOBS
+        with open(file=blob.name, mode="wb") as download_file:
+            download_file.write(container_client.download_blob(blob.name).readall())
+
+
 
 except Exception as ex:
     print('Exception:')

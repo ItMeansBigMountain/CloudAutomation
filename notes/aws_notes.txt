@@ -71,10 +71,6 @@ ENCRYPT USING AWS KEY MANAGER SYSTEM
                           --commitment-policy require-encrypt-require-decrypt
                           --output ~/output/.
 
-
-
-
-
 ____________________________________________________________________
 
 
@@ -90,5 +86,22 @@ CLI
         aws ec2 describe-instances --instance-id {NEW-INSTANCE-ID} --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'
 
 
-    CREATE AMI (Amazon Machine Image)
-        
+
+
+
+    CREATE S3 BUCKET
+    aws s3api create-bucket --bucket [TITLE][4-DIGIT-ID] --region <region> --create-bucket-configuration LocationConstraint=<region>
+
+
+    DESCRIBE VPC
+        aws ec2 describe-vpcs --query 'Vpcs[*].[VpcId,Tags[?Key==`Name`].Value,CidrBlock]' --filters "Name=tag:Name,Values='VPC1'"
+
+    
+    CREATE VPC FLOW LOGS (interface logs)
+        aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-type ALL --log-destination-type s3 --log-destination arn:aws:s3:::<flowlog####>
+
+
+
+
+
+

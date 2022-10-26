@@ -1,3 +1,14 @@
+# *********************************************************
+# CREATES EC-2 INSTANCE 
+# DOCUMENTATION : https://www.terraform.io/cdktf
+# *********************************************************
+
+
+
+
+
+
+
 #!/usr/bin/env python
 from constructs import Construct
 from cdktf import App, TerraformStack

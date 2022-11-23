@@ -17,7 +17,7 @@ from azure.mgmt.resource import ResourceManagementClient
 
 # AUTHORIZATION
 credential = AzureCliCredential()
-subscription_id =  "e928ce0b-aa60-4e05-a8c2-a9eb05266c69"
+subscription_id =  "44ad0ad0-6513-43de-a596-0b293e83e53c"
 
 
 # INIT RESOURCE MANAGER CLIENT
